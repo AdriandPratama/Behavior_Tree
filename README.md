@@ -1,74 +1,75 @@
-# 🚗 AGV Behavior Tree Simulation (Tkinter)
+KELOMPOK:
+- Adriand Pratama (4222201036)
+- Olivia Febrianti (4222201022) -
+-  Nedia Waty (4222201010)
 
-Proyek ini merupakan implementasi **Behavior Tree** untuk sistem **AGV (Automated Guided Vehicle)** menggunakan **Python (Tkinter)**.  
-Simulasi menampilkan perilaku AGV dalam menjalankan tugas seperti mengambil barang (*pickup*), mengirim barang (*delivery*), dan mengisi ulang baterai (*charging*) secara otomatis berdasarkan kondisi baterai.
+🚗 AGV Simulation with Behavior Tree (Tkinter)
 
----
+Proyek ini merupakan implementasi model Behavior Tree pada Automated Guided Vehicle (AGV) menggunakan Python + Tkinter sebagai visualisasi simulasi.
+AGV akan bergerak secara otomatis sesuai logika perilaku yang telah ditentukan—mulai dari start, pickup, delivery, hingga charging saat baterai menipis.
 
-## 🎯 Tujuan
-Mensimulasikan **pengambilan keputusan berbasis Behavior Tree** untuk robot AGV agar mampu:
-- Mengambil dan mengirim barang secara otomatis.
-- Memantau kondisi baterai.
-- Menghentikan tugas dan menuju stasiun pengisian saat baterai rendah.
-- Melanjutkan tugas setelah baterai penuh.
+🎯 Fitur Utama
 
----
+Behavior Tree Model untuk pengambilan keputusan AGV.
 
-## 🧩 Struktur Behavior Tree
-```text
-Root
-├── Sequence: Low Battery Handler
-│   ├── Condition: Battery < 20%
-│   └── Action: Move to Charge → Charge Battery
-└── Sequence: Main Task
-    ├── Action: Move to Pickup → Pickup Item
-    ├── Action: Move to Delivery → Deliver Item
-🖥️ Teknologi yang Digunakan
-Python 3
+Simulasi Visual dengan Tkinter.
 
-Tkinter untuk antarmuka dan visualisasi AGV.
+Level Baterai Dinamis, berkurang saat AGV bergerak, dan mengisi ulang di area charging.
 
-Multithreading untuk simulasi non-blocking.
+Pergerakan Otomatis berdasarkan status tugas dan kondisi baterai.
 
-OOP Design untuk struktur Behavior Tree yang modular.
+Tampilan Interaktif, dengan indikator posisi dan level baterai.
 
-⚙️ Cara Menjalankan
-Pastikan Python sudah terinstal (versi 3.8 atau lebih baru).
+⚙️ Teknologi yang Digunakan
 
-Unduh atau clone repositori ini:
+Python 3.x
 
-bash
-Salin kode
-git clone https://github.com/AdriandPratama/Behavior_Tree.git
-cd Behavior_Tree
-Jalankan program:
+Tkinter (GUI bawaan Python)
 
-bash
-Salin kode
+Object-Oriented Design
+
+Behavior Tree Logic Implementation
+
+▶️ Cara Menjalankan
+
+Pastikan Python 3 sudah terinstall.
+
+Jalankan terminal atau command prompt di folder proyek.
+
+Ketik perintah berikut:
+
 python agv_bt_tkinter.py
-🎮 Fitur Simulasi
-AGV bergerak otomatis antara titik pickup, delivery, dan charging.
 
-Baterai menurun secara dinamis selama perjalanan.
+🧭 Alur Simulasi AGV
 
-Mode penyelamatan otomatis: jika baterai hampir habis, AGV tetap berjalan pelan ke stasiun pengisian.
+Start Node
+AGV memulai dari titik awal (misalnya base station) dengan status baterai penuh.
 
-Visual indikator baterai dengan warna:
+Pickup Node
+AGV bergerak menuju area pickup untuk mengambil muatan.
+Jika baterai di bawah ambang batas sebelum sampai, behavior tree mengalihkan ke charging.
 
-🟢 Hijau = >50%
+Delivery Node
+Setelah pickup selesai, AGV mengantar muatan ke lokasi delivery.
+Selama perjalanan, baterai terus berkurang sesuai kecepatan gerak.
 
-🟡 Kuning = 20–50%
+Charging Node
+Jika baterai turun di bawah level aman, AGV langsung menuju area charging.
+Setelah pengisian penuh, ia kembali melanjutkan tugas yang tertunda.
 
-🔴 Merah = <20%
+Idle / Finish
+Setelah semua tugas selesai dan baterai aman, AGV masuk ke kondisi idle.
 
-📸 Tampilan Simulasi
-Tampilan sederhana Tkinter menampilkan titik:
+Alur di atas digambarkan dalam Behavior Tree seperti berikut:
 
-Pickup (oranye)
+Root
+ ├── Sequence: Main Task
+ │     ├── Start
+ │     ├── Pickup
+ │     ├── Delivery
+ │     └── Return
+ └── Selector: Battery Management
+       ├── Check Battery
+       └── Charging
 
-Delivery (biru muda)
-
-Charging (hijau)
-
-AGV ditampilkan sebagai lingkaran biru yang bergerak sesuai keputusan Behavior Tree.
 
