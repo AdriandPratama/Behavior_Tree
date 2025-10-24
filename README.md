@@ -3,6 +3,9 @@ KELOMPOK:
 - Olivia Febrianti (4222201022) -
 -  Nedia Waty (4222201010)
 
+
+
+
 🚗 AGV Simulation with Behavior Tree (Tkinter)
 
 Proyek ini merupakan implementasi model Behavior Tree pada Automated Guided Vehicle (AGV) menggunakan Python + Tkinter sebagai visualisasi simulasi.
@@ -60,16 +63,5 @@ Setelah pengisian penuh, ia kembali melanjutkan tugas yang tertunda.
 Idle / Finish
 Setelah semua tugas selesai dan baterai aman, AGV masuk ke kondisi idle.
 
-Alur di atas digambarkan dalam Behavior Tree seperti berikut:
-
-Root
- ├── Sequence: Main Task
- │     ├── Start
- │     ├── Pickup
- │     ├── Delivery
- │     └── Return
- └── Selector: Battery Management
-       ├── Check Battery
-       └── Charging
 
 
